@@ -9,7 +9,7 @@ export class UserService {
 
     async createUser(data: Prisma.UsuarioCreateInput ) {
         const salt = await bcrypt.genSalt();
-        data.Senha = await bcrypt.hash(data.Senha, salt);
+        data.USR_Senha = await bcrypt.hash(data.USR_Senha, salt);
 
         return this.prisma.usuario.create({
             data
@@ -19,15 +19,15 @@ export class UserService {
     async getUserById(data: Prisma.UsuarioWhereUniqueInput) {
         return await this.prisma.usuario.findUnique({
             where: {
-                Id: data.Id
+                USR_CodigoUsuario: data.USR_CodigoUsuario
             }
         })
     }
 
-    public async findOne(email: Prisma.UsuarioWhereUniqueInput) {
+    public async findOne(USR_Email: Prisma.UsuarioWhereUniqueInput) {
         return await this.prisma.usuario.findUnique({
                                             where: {
-                                                Email: email.Email
+                                                USR_Email: USR_Email.USR_Email
                                             }
                                         });
     }

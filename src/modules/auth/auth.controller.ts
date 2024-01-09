@@ -10,12 +10,13 @@ export class AuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   async signIn(@Body() data: {
-    Email: string,
-    Senha: string
+    USR_Email: string,
+    USR_Senha: string
   }){
     return await this.authService.singIn(data)
   }
 
+  
   @UseGuards(AuthGuard)
   @Get('profile')
   getProfile(@Req() req) {

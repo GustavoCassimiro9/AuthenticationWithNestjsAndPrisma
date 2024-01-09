@@ -1,4 +1,4 @@
 export type UserAuthentication = {
-    Email: string,
-    Senha: string
+    USR_Email: string,
+    USR_Senha: string
 }

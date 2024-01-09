@@ -16,18 +16,18 @@ export class AuthService {
     async singIn(data: UserAuthentication) {
         const user = await this.userService.findOne(data);
         if (user) {
-            let isMathPassword = await bcrypt.compare(data.Senha, user.Senha);
+            let isMathPassword = await bcrypt.compare(data.USR_Senha, user.USR_Senha);
 
             if (isMathPassword) {
-                const paylaod = {sub: user.Id, userName: user.Nome};
+                const paylaod = {sub: user.USR_CodigoUsuario, userName: user.USR_Nome};
                 return {
-                    message:`Bem vindo ${user.Nome}`,
+                    message:`Bem vindo ${user.USR_Nome}`,
                     access_token: await this.jwtService.signAsync(paylaod)
                 }
             }
             else {
                 const error = {
-                    message: "Usuário ou senha não encontrados"
+                    message: "Usuário ou USR_Senha não encontrados"
                 } 
                 throw new UnauthorizedException(error);
             }

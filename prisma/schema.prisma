@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Usuario {
-  Id Int @id @default(autoincrement())
-  Nome String @db.VarChar(75)
-  Email String @unique
-  Senha String
+  USR_CodigoUsuario Int @id @default(autoincrement())
+  USR_Nome String @db.VarChar(75)
+  USR_Email String @unique
+  USR_Senha String
   createdAt DateTime @default(now())
 }
 

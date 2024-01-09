@@ -7,16 +7,16 @@ export class UserController {
 
   @Post('create')
   async createUser(@Body() data: {
-      Nome: string,
-      Email: string,
-      Senha: string,
+      USR_Nome: string,
+      USR_Email: string,
+      USR_Senha: string,
   } ) {
       return this.userService.createUser(data)
   }
 
   @Get('getuser/:id')
-  async getUser(@Param('id') id: string) {
-      const userId = {Id: parseInt(id)}
+  async getUser(@Param('USR_CodigoUsuario') USR_CodigoUsuario: string) {
+      const userId = {USR_CodigoUsuario: parseInt(USR_CodigoUsuario)}
       return await this.userService.getUserById(userId)
   }
 
